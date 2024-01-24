@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>正式版V1.1</title>
+    <title>測試版V1.2</title>
     <style>
         body {
             display: flex;
@@ -22,18 +23,13 @@
         }
 
         textarea {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .button-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        button {
-            margin-top: 10px;
-            font-size: 1.2em; /* 加大按鈕字體大小 */
         }
     </style>
     <script>
@@ -42,9 +38,8 @@
             var paragraphs = inputText.split('条');
             var resultText = paragraphs.join('条\n');
             document.getElementById("outputText").value = resultText;
-        }
 
-        function copyToClipboard() {
+            // 自動複製處理後的文字到剪貼板
             var outputText = document.getElementById("outputText").value;
             navigator.clipboard.writeText(outputText)
                 .then(() => {
@@ -57,15 +52,14 @@
     </script>
 </head>
 <body>
-    <h1>這裡很可怕不要多問</h1>
+    <h1>好想喝０卡可樂</h1>
 
-    <label for="inputText"><b>貼進來就好：</b></label>
+    <label for="inputText">別猶豫貼這邊：</label>
     <textarea id="inputText" rows="10" cols="50" oninput="updateOutput()"></textarea>
 
     <div class="button-container">
-        <label for="outputText"><b>點下面複製：</b></label>
+        <label for="outputText">別懷疑去貼上：</label>
         <textarea id="outputText" rows="15" cols="50" readonly></textarea>
-        <button onclick="copyToClipboard()"><b>點我然後直接去貼上</b></button>
     </div>
 </body>
 </html>
