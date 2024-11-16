@@ -69,21 +69,23 @@
     <div id="container">
         <div id="left">
             <h2>獎項內容</h2>
-            <textarea id="prizes" placeholder="輸入獎項和數量，每行一個，例如：
-頭獎,1
-二獎,2
-三獎,3
-四獎,4
-五獎,5"></textarea>
+            <textarea id="prizes" placeholder="輸入說明：獎項,數量(逗號間隔)
+數量省略則默認1，每行一個：
+
+範例
+香港機票 <--- 有獎項沒數量，預設該獎項抽1個
+二獎,2 <--- 二獎共抽2個
+三獎,3 <--- 三獎共抽3個
+現金2000元 <--- 該現金2000元，預設抽1個"></textarea>
         </div>
         <div id="center">
             <h2>待抽名單</h2>
-            <textarea id="participants" placeholder="輸入參賽者資訊，每行一個，例如：
-你是誰
-快輸入
-不要問
-然後按
-去抽獎"></textarea>
+            <textarea id="participants" placeholder="輸入抽獎者資訊，每行一個，例如：
+諸葛亮
+蘇東坡
+秦始皇
+李世民
+朱元璋"></textarea>
         </div>
         <div id="right">
             <h2>中獎結果</h2>
