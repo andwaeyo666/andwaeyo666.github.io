@@ -46,7 +46,7 @@
             width: 100%;
         }
         #results {
-            font-size: 14px;
+            font-size: 20px;
             text-align: left; /* 將文字靠左顯示 */
         }
         button {
@@ -58,8 +58,10 @@
             padding-left: 0;
         }
         #loading {
-            font-size: 16px;
+            font-size: 20px; /* 確保顯示的文字大小一致 */
             text-align: left; /* 將閃爍文字靠左顯示 */
+            filter: blur(0px); /* 添加模糊效果 */
+            transition: filter 0.2s ease-in-out; /* 平滑過渡 */
         }
     </style>
 </head>
@@ -121,21 +123,28 @@
 
                 // 閃爍動畫
                 for (let i = 0; i < 40; i++) { // 2秒約等於20次50ms，調整為每次50ms加快閃爍
-                    const randomIndex = Math.floor(Math.random() * participants.length);
-                    const randomParticipant = participants[randomIndex];
-                    document.getElementById('loading').innerText = randomParticipant;
-                    await new Promise(resolve => setTimeout(resolve, 100)); // 等待100ms
+                    let randomParticipants = '';
+                    for (let j = 0; j < prize.count; j++) {
+                        const randomIndex = Math.floor(Math.random() * participants.length);
+                        const randomParticipant = participants[randomIndex];
+                        randomParticipants += `<li>${randomParticipant}</li>`;
+                    }
+                    document.getElementById('loading').innerHTML = `<ul>${randomParticipants}</ul>`;
+                    document.getElementById('loading').style.filter = `blur(${Math.random() * 3}px)`; // 添加隨機模糊效果
+                    await new Promise(resolve => setTimeout(resolve, 50)); // 等待50ms
                 }
 
-                document.getElementById('loading').innerText = '';
+                document.getElementById('loading').innerHTML = '';
 
+                let prizeWinners = '';
                 for (let i = 0; i < prize.count && participants.length > 0; i++) {
                     const winnerIndex = Math.floor(Math.random() * participants.length);
                     const winner = participants.splice(winnerIndex, 1)[0];
-                    results += `<li>${winner}</li>`;
+                    prizeWinners += `<li>${winner}</li>`;
                 }
-                results += '</ul>';
+                results += prizeWinners + '</ul>';
                 document.getElementById('results').innerHTML = results;
+
                 await new Promise(resolve => setTimeout(resolve, 1500)); // 等待1.5秒
             }
         }
